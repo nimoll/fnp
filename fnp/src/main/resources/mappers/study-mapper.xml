@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="studyMapper">
+	
+	<select id="categoryS" resultType="string">
+		<![CDATA[
+			select category
+			from (select category, count(category)
+        		  from study
+        		  group by category)
+			where rownum <= 3
+		]]>
+	</select>
+	
+	<select id="newStudy" resultType="Study">
+		<![CDATA[
+			select *
+			from (
+			    select *
+			    from study
+			    order by start_date desc
+			)
+			where rownum <=3
+		]]>
+	</select>
+	
+	<select id="selectStudyList" resultType="Study">
+		<![CDATA[
+			select * from study
+		]]>
+	</select>
+	
+	<select id="listCount" resultType="_int">
+	<![CDATA[
+		select count(*) from study
+	]]>
+	</select>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.kh.fnp.faq.model.vo.Faq" alias="Faq"/>
+		<typeAlias type="com.kh.fnp.member.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.kh.fnp.notice.model.vo.Notice" alias="Notice"/>
+		<typeAlias type="com.kh.fnp.qna.model.vo.Qna" alias="Qna"/>
+		<typeAlias type="com.kh.fnp.report.model.vo.Report" alias="Report"/>
+		<typeAlias type="com.kh.fnp.study.model.vo.Study" alias="Study"/>
+		<typeAlias type="com.kh.fnp.userStudy.model.vo.UserStudy" alias="UserStudy"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/notice-mapper.xml"/>
+		<mapper resource="mappers/faq-mapper.xml"/>
+		<mapper resource="mappers/qna-mapper.xml"/>
+		<mapper resource="mappers/report-mapper.xml"/>
+		<mapper resource="mappers/study-mapper.xml"/>
+		<mapper resource="mappers/userStudy-mapper.xml"/>
+	</mappers>
+</configuration>
