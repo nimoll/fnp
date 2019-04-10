@@ -11,6 +11,8 @@
 		<typeAlias type="com.kh.fnp.report.model.vo.Report" alias="Report"/>
 		<typeAlias type="com.kh.fnp.study.model.vo.Study" alias="Study"/>
 		<typeAlias type="com.kh.fnp.userStudy.model.vo.UserStudy" alias="UserStudy"/>
+		<typeAlias type="com.kh.fnp.studyRequest.model.vo.StudyRequest" alias="StudyRequest"/>
+		<typeAlias type="com.kh.fnp.studyGoal.model.vo.StudyGoal" alias="StudyGoal"/>
 	</typeAliases>
 	
 	<mappers>
@@ -21,5 +23,7 @@
 		<mapper resource="mappers/report-mapper.xml"/>
 		<mapper resource="mappers/study-mapper.xml"/>
 		<mapper resource="mappers/userStudy-mapper.xml"/>
+		<mapper resource="mappers/studyGoal-mapper.xml"/>
+		<mapper resource="mappers/studyRequest-mapper.xml"/>
 	</mappers>
 </configuration>
