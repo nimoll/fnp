@@ -10,12 +10,12 @@ public class Study implements Serializable{
 	private static final long serialVersionUID = 9994L;
 	
 	private int study_no;
-	private String emali;
+	private String email;
 	private String category;
 	private String study_name;
 	private int limit_count;
 	private int limit_age;
-	private String limit_genger;
+	private String LIMIT_GENDER;
 	private int current_m_count;
 	private Date start_date;
 	private Date end_date;
@@ -27,17 +27,17 @@ public class Study implements Serializable{
 		super();
 	}
 
-	public Study(int study_no, String emali, String category, String study_name, int limit_count, int limit_age,
-			String limit_genger, int current_m_count, Date start_date, Date end_date, String study_info,
+	public Study(int study_no, String email, String category, String study_name, int limit_count, int limit_age,
+			String LIMIT_GENDER, int current_m_count, Date start_date, Date end_date, String study_info,
 			String image_origin, String image_rename) {
 		super();
 		this.study_no = study_no;
-		this.emali = emali;
+		this.email = email;
 		this.category = category;
 		this.study_name = study_name;
 		this.limit_count = limit_count;
 		this.limit_age = limit_age;
-		this.limit_genger = limit_genger;
+		this.LIMIT_GENDER = LIMIT_GENDER;
 		this.current_m_count = current_m_count;
 		this.start_date = start_date;
 		this.end_date = end_date;
@@ -54,12 +54,12 @@ public class Study implements Serializable{
 		this.study_no = study_no;
 	}
 
-	public String getEmali() {
-		return emali;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmali(String emali) {
-		this.emali = emali;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getCategory() {
@@ -94,12 +94,12 @@ public class Study implements Serializable{
 		this.limit_age = limit_age;
 	}
 
-	public String getLimit_genger() {
-		return limit_genger;
+	public String getLIMIT_GENDER() {
+		return LIMIT_GENDER;
 	}
 
-	public void setLimit_genger(String limit_genger) {
-		this.limit_genger = limit_genger;
+	public void setLIMIT_GENDER(String LIMIT_GENDER) {
+		this.LIMIT_GENDER = LIMIT_GENDER;
 	}
 
 	public int getCurrent_m_count() {
@@ -156,9 +156,9 @@ public class Study implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Study [study_no=" + study_no + ", emali=" + emali + ", category=" + category + ", study_name="
-				+ study_name + ", limit_count=" + limit_count + ", limit_age=" + limit_age + ", limit_genger="
-				+ limit_genger + ", current_m_count=" + current_m_count + ", start_date=" + start_date + ", end_date="
+		return "Study [study_no=" + study_no + ", email=" + email + ", category=" + category + ", study_name="
+				+ study_name + ", limit_count=" + limit_count + ", limit_age=" + limit_age + ", LIMIT_GENDER="
+				+ LIMIT_GENDER + ", current_m_count=" + current_m_count + ", start_date=" + start_date + ", end_date="
 				+ end_date + ", study_info=" + study_info + ", image_origin=" + image_origin + ", image_rename="
 				+ image_rename + "]";
 	}

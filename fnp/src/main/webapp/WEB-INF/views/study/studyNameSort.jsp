@@ -99,7 +99,6 @@
 						location.href="studyName.do"
 						break;
 					};					
-					
 				}
 			</script>
 	</head>
@@ -141,8 +140,9 @@
 												<li style="padding-top: 15px; padding-left: 6px;"><a>개인정보 수정</a></li>
 												<li style="padding-left: 6px;"><a> 패스워드 변경</a></li>
 												<li style="padding-left: 6px;"><a> 마이스터디</a></li>
+												<li></li>
 											</ul>
-											<form action="studymain.do" method="post">
+											<form action="studyName.do" method="post">
 												<table>
 													<tr>
 														<td style="background: #F5F6F9; font-size: 20px; border: 1px solid #F5F5F9;">&nbsp;&nbsp;상세검색</td>
@@ -188,13 +188,23 @@
 									<h3>최근생성 스터디</h3>
 								</div>
 									<!-- tab -->
-									<div class="tab" onclick="opentab('newStudy', this);" style="background-color: #37c0fb; color: white;">최근등록순</div>
-									<div class="tab" onclick="opentab('currentCount', this);">참여높은순</div>
-									<div class="tab" onclick="opentab('studyName', this);" style="border-right: 0;">제목순정렬</div>
+									<div class="tab" onclick="opentab('newStudy', this);" >최근등록순</div>
+									<div class="tab" onclick="opentab('currentCount', this);" >참여높은순</div>
+									<div class="tab" onclick="opentab('studyName', this);" style="background-color: #37c0fb; color: white;">제목순정렬</div>
 									
 									<!-- 최근등록순 뷰 -->
-									<div id="newStudy" class="tabcontent" style="display: block;">
+									<div id="newStudy" class="tabcontent">
+
+									</div>
+									
+									<!-- 참여자 높은순 뷰 -->
+									<div id="currentCount" class="tabcontent" >
 										
+										
+									</div>
+											
+									<!-- 제목순정렬 뷰 -->
+									<div id="studyName" class="tabcontent" style="display: block;">
 										<table>
 											<c:choose>
 												<c:when test="${ fn:length(list) > 0 }">
@@ -244,16 +254,16 @@
 								
 										<!-- 페이징 처리 -->
 										<div style="text-align: center">
-											<c:url var="first" value="studymain.do">
+											<c:url var="first" value="studyName.do">
 												<c:param name="page" value="1" />
 											</c:url>
 											<a href="${first }">[맨처음]</a>&nbsp;
-											<c:url var="prev" value="studymain.do">
+											<c:url var="prev" value="studyName.do">
 												<c:param name="page" value="${startPage - limit }" />
 											</c:url>
 											<a href="${prev }">[이전]</a>&nbsp;
 											<c:forEach var="p" begin="${startPage }" end="${endPage }" step="1">
-												<c:url var="move" value="studymain.do">
+												<c:url var="move" value="studyName.do">
 													<c:param name="page" value="${p }" />
 												</c:url>
 												<c:if test="${p eq currentPage }">
@@ -263,26 +273,15 @@
 													<a href="${move }">[${p }]</a>&nbsp;
 												</c:if>
 											</c:forEach>
-											<c:url var="next" value="studymain.do">
+											<c:url var="next" value="studyName.do">
 												<c:param name="page" value="${endPage - limit }" />
 											</c:url>
 											<a href="${next }">[next]</a>&nbsp;
-											<c:url var="last" value="studymain.do">
+											<c:url var="last" value="studyName.do">
 												<c:param name="page" value="${maxPage }" />
 											</c:url>
 											<a href="${last }">[맨끝]</a>
-										</div> 
-
-									</div>
-									
-									<!-- 참여자 높은순 뷰 -->
-									<div id="currentCount" class="tabcontent">
-										<iframe src="studyattend.do" width="100%" height="800px" marginheight="0"></iframe>
-									</div>
-											
-									<!-- 제목순정렬 뷰 -->
-									<div id="studyName" class="tabcontent">
-										<iframe src="studyadmin.do" width="100%" height="800px" marginheight="0"></iframe>
+										</div>
 									</div>
 									<div style="clear:left; height: 40px;"></div>
 								

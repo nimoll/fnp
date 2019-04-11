@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studyMapper">
 	
-	<select id="categoryS" resultType="string">
+	<select id="selectcategoryS" resultType="string">
 		<![CDATA[
 			select category
 			from (select category, count(category)
@@ -14,7 +14,7 @@
 		]]>
 	</select>
 	
-	<select id="newStudy" resultType="Study">
+	<select id="selectnewStudy" resultType="Study">
 		<![CDATA[
 			select *
 			from (
@@ -26,15 +26,169 @@
 		]]>
 	</select>
 	
-	<select id="selectStudyList" resultType="Study">
+	<select id="selectSearchNewCreateStudyList1" parameterType="hashmap" resultType="Study">
 		<![CDATA[
-			select * from study
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study]]> 
+     				  where study_name like '%'||#{searchName}||'%' 
+     	<![CDATA[			  order by start_date desc))
+			where rnum >= #{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
 	
-	<select id="listCount" resultType="_int">
+	
+	<select id="selectSearchNewCreateStudyList2" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study]]> 
+     				  where study_name like '%'||#{searchName}||'%' and CATEGORY like #{category} 
+     	<![CDATA[			  order by start_date desc))
+			where rnum >= #{startRow} and rnum <= #{endRow}
+		]]>
+		
+	</select>
+	
+	<select id="selectSearchNewCreateStudyList3" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study]]> 
+     				  where CATEGORY like #{category} 
+     	<![CDATA[			  order by start_date desc))
+			where rnum >= #{startRow} and rnum <= #{endRow}
+		]]>
+		
+	</select>
+	
+	<select id="selectNewCreateStudyList" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study order by start_date desc))
+			where rnum >= #{startRow} and rnum <= #{endRow}
+
+		]]>
+	</select>
+	
+	<select id="selectCurrnetCountStudyList" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study order by current_m_count desc))
+			where rnum >= #{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="selectSearchCurrnetCountStudyList1" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study ]]>
+     			where study_name like '%'||#{searchName}||'%'
+     	<![CDATA[		order by current_m_count desc))
+			where rnum >= #{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="selectSearchCurrnetCountStudyList2" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study ]]>
+     			 where study_name like '%'||#{searchName}||'%' and CATEGORY like #{category}
+     	<![CDATA[		order by current_m_count desc))
+			where rnum >= #{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="selectSearchCurrnetCountStudyList3" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study ]]>
+     			where CATEGORY like #{category} 
+     	<![CDATA[		order by current_m_count desc))
+			where rnum >= #{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="selectNameSortStudyList" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study order by study_name))
+			where rnum >= #{startRow} and rnum <= #{endRow} 
+		]]>
+	</select>
+	
+	<select id="selectSearchNameSortStudyList1" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study]]>
+     			 where study_name like '%'||#{searchName}||'%' 
+     	<![CDATA[ order by study_name))
+			where rnum >= #{startRow} and rnum <= #{endRow} 
+		]]>
+	</select>
+	
+	<select id="selectSearchNameSortStudyList2" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study]]>
+     			 where study_name like '%'||#{searchName}||'%' and CATEGORY like #{category}
+     	<![CDATA[ order by study_name))
+			where rnum >= #{startRow} and rnum <= #{endRow} 
+		]]>
+	</select>
+	
+	<select id="selectSearchNameSortStudyList3" parameterType="hashmap" resultType="Study">
+		<![CDATA[
+			select *
+			from(select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study]]>
+     			 where CATEGORY like #{category} 
+     	<![CDATA[ order by study_name))
+			where rnum >= #{startRow} and rnum <= #{endRow} 
+		]]>
+	</select>
+	
+	<select id="selectlistCount" resultType="_int">
 	<![CDATA[
 		select count(*) from study
+	]]>
+	</select>
+	
+	<select id="selectNamelistCount" parameterType="string" resultType="_int">
+	<![CDATA[
+		select count(*) from (
+			select STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study]]> 
+     				  where study_name like '%'||#{searchName}||'%' 
+	<![CDATA[	))
+	]]>
+	</select>
+	
+	<select id="selectCategoryNamelistCount" parameterType="hashmap" resultType="_int">
+	<![CDATA[
+		select count(*) from (
+			select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study]]> 
+     				  where study_name like '%'||#{searchName}||'%' and CATEGORY like #{category} 
+	<![CDATA[	))
+	]]>
+	</select>
+	
+	<select id="selectCategorylistCount" parameterType="string" resultType="_int">
+	<![CDATA[
+		select count(*) from (
+			select rownum rnum, STUDY_NO, EMAIL, CATEGORY, STUDY_NAME, LIMIT_COUNT, LIMIT_AGE, LIMIT_GENDER, CURRENT_M_COUNT, START_DATE, END_DATE, STUDY_INFO, image_origin, image_rename
+     			from (select * from study]]> 
+     				  where CATEGORY like #{category} 
+	<![CDATA[	))
 	]]>
 	</select>
 </mapper>
