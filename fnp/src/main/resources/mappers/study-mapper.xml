@@ -37,4 +37,20 @@
 		select count(*) from study
 	]]>
 	</select>
+	
+	<select id="selectOneStudy" resultType="Study">
+		<!-- 유진 -->
+		<![CDATA[
+			select * from study
+			where study_no = #{study_no}
+		]]>
+	</select>
+	
+	<select id="selectOneStudyGoalList" resultType="StudyGoal">
+		<!-- 유진 -->
+		<![CDATA[
+			select * from studygoal
+			where study_no = #{study_no}
+		]]>
+	</select>
 </mapper>
